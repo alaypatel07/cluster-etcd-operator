@@ -59,7 +59,7 @@ require (
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/openshift/api v0.0.0-20190618182729-a77179bc5896
 	github.com/openshift/client-go v0.0.0-20190617165122-8892c0adc000
-	github.com/openshift/library-go v0.0.0-20190619114638-6b58b672ee58
+	github.com/openshift/library-go v0.0.0-20191101120501-b38318f0eb29
 	github.com/openshift/machine-config-operator v4.2.0-alpha.0.0.20190917115525-033375cbe820+incompatible
 	github.com/pborman/uuid v1.2.0 // indirect
 	github.com/pkg/errors v0.8.1
