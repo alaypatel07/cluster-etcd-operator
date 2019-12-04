@@ -59,10 +59,10 @@ require (
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/openshift/api v0.0.0-20190618182729-a77179bc5896
 	github.com/openshift/client-go v0.0.0-20190617165122-8892c0adc000
-	github.com/openshift/library-go v0.0.0-20191101120501-b38318f0eb29
+	github.com/openshift/library-go v0.0.0-20190619114638-6b58b672ee58
 	github.com/openshift/machine-config-operator v4.2.0-alpha.0.0.20190917115525-033375cbe820+incompatible
 	github.com/pborman/uuid v1.2.0 // indirect
-	github.com/pkg/errors v0.8.1
+	github.com/pkg/errors v0.8.1 // indirect
 	github.com/pkg/profile v1.3.0 // indirect
 	github.com/prometheus/client_golang v0.0.0-20181207105117-505eaef01726
 	github.com/sirupsen/logrus v1.4.2 // indirect
@@ -85,7 +85,6 @@ require (
 	google.golang.org/grpc v1.21.1 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
-	gopkg.in/yaml.v2 v2.2.2
 	k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 	k8s.io/apiextensions-apiserver v0.0.0-20190315093550-53c4693659ed // indirect
 	k8s.io/apimachinery v0.0.0-20190313205120-d7deff9243b1

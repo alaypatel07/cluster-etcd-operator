@@ -2,9 +2,10 @@ package operator
 
 import (
 	"fmt"
-	"time"
-
+	"github.com/openshift/cluster-etcd-operator/pkg/operator/targetconfigcontroller"
 	"github.com/openshift/library-go/pkg/operator/status"
+	"os"
+	"time"
 
 	"github.com/openshift/cluster-etcd-operator/pkg/operator/hostetcdendpointcontroller"
 
@@ -141,6 +142,16 @@ func RunOperator(ctx *controllercmd.ControllerContext) error {
 		etcdDiscoveryDomain,
 	)
 
+	targetConfigReconciler := targetconfigcontroller.NewTargetConfigController(
+		os.Getenv("IMAGE"),
+		os.Getenv("OPERATOR_IMAGE"),
+		operatorClient,
+		kubeInformersForNamespaces.InformersFor(operatorclient.TargetNamespace),
+		kubeInformersForNamespaces,
+		kubeClient,
+		ctx.EventRecorder,
+	)
+
 	operatorConfigInformers.Start(ctx.Done())
 	kubeInformersForNamespaces.Start(ctx.Done())
 	configInformers.Start(ctx.Done())
@@ -151,6 +162,7 @@ func RunOperator(ctx *controllercmd.ControllerContext) error {
 	go clusterOperatorStatus.Run(1, ctx.Done())
 	go configObserver.Run(1, ctx.Done())
 	go clusterMemberController.Run(ctx.Done())
+	go targetConfigReconciler.Run(1, ctx.Done())
 	go func() {
 		err := bootstrapteardown.TearDownBootstrap(ctx.KubeConfig, clusterMemberController, operatorClient.Client.Etcds())
 		if err != nil {
