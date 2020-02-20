@@ -278,6 +278,7 @@ func (c *ClusterMemberController) getValidPodFQDNToScale(unreadyPods []*corev1.P
 		podFQDN, err := clustermembercontroller.ReverseLookupSelf("etcd-server-ssl", "tcp", etcdDiscoveryDomain, nodeInternalIP)
 		if err != nil {
 			errorStrings = append(errorStrings, err.Error())
+			continue
 		}
 		return podFQDN, nil
 	}
